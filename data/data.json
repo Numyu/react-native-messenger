@@ -1,0 +1,9 @@
+[
+  { "id": 1, "userId": 1, "recipientId": 2, "content": "Salut !" },
+  { "id": 2, "userId": 1, "recipientId": 2, "content": "Ca va ?" },
+  { "id": 3, "userId": 2, "recipientId": 1, "content": "Trql et toi ??" },
+
+  { "id": 4, "userId": 2, "recipientId": 1, "content": "Tu fais quoi ?" },
+  { "id": 5, "userId": 1, "recipientId": 1, "content": "Je vais jouer" },
+  { "id": 6, "userId": 1, "recipientId": 1, "content": "Tu viens ?" }
+]
