@@ -1,25 +1,32 @@
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
-  TextInput,
-  Button,
-  TouchableOpacity,
   Image,
-  KeyboardAvoidingView,
-  Platform,
-  TouchableWithoutFeedback,
-  Keyboard,
+  TouchableOpacity,
 } from "react-native";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Menu(props) {
+  const deleteAllMessages = async () => {
+    try {
+      const jsonValue = JSON.stringify([]);
+      await AsyncStorage.setItem('messages', jsonValue);
+    } catch (error) {
+      console.error('Error storing data:', error);
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.menuBar}>
         <Image style={styles.menuIcon} source={require("../assets/wewe.jpg")} />
-        <Text style={styles.menuName}>{props.name}</Text>
+        <Text style={[styles.menuName, { flex: 1 }]}>{props.name}</Text>
+        <View style={{ flexDirection: 'row-reverse' }}>
+          <TouchableOpacity onPress={deleteAllMessages}>
+            <Image style={styles.btnImg} source={require("../assets/delete.png")} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -50,5 +57,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "medium",
     color: "white",
+  },
+  btnImg: {
+    height: 25,
+    width: 25,
+    margin: 14,
   },
 });
